@@ -1,21 +1,20 @@
 package controller
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"web/common"
+	"web/helper"
 )
 
-type returnData struct {
-	Title string
-}
-
-/* handle a simple get request */
 func HelloWorld(w http.ResponseWriter, request *http.Request) {
-	data := returnData{Title: "sdada"}
-	fmt.Println(data)
-	common.RenderTemplate(w, "hello", &data)
+	map2 := make(map[string]string, 100)
+	map2["key"] = "dddd"
+	helper.ResponseOk(w, 200, map2, "asdasda")
+	//fmt.Println(DbEngin)
+	//data := returnData{Title: "sdada"}
+	//fmt.Println(data)
+	//common.RenderTemplate(w, "hello", &data)
 }
 
 func ServerSetup(port string) {
