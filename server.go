@@ -1,7 +1,7 @@
 package main
 
-import "web/Controller"
+import "web/controller"
 
-func main()  {
-	Controller.ServerSetup("9001")
+func main() {
+	controller.ServerSetup("9001")
 }

@@ -1,13 +1,12 @@
-package Controller
+package controller
 
 import (
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
+	"web/common"
 )
-
-type HandleFnc func(http.ResponseWriter, *http.Request)
 
 type returnData struct {
 	Title string
@@ -22,20 +21,9 @@ func HelloWorld(w http.ResponseWriter, request *http.Request) {
 
 func ServerSetup(port string) {
 	log.Println("start setup server:")
-	http.HandleFunc("/", logPanics(HelloWorld))
+	http.HandleFunc("/", common.LogPanics(HelloWorld))
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal("ListenAndServe err: ", err)
-	}
-}
-
-func logPanics(function HandleFnc) HandleFnc {
-	return func(writer http.ResponseWriter, request *http.Request) {
-		defer func() {
-			if x := recover(); x != nil {
-				log.Printf("[%v] caught panic: %v", request.RemoteAddr, x)
-			}
-		}()
-		function(writer, request)
 	}
 }
 
