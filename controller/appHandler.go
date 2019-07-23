@@ -2,7 +2,6 @@ package controller
 
 import (
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"web/common"
@@ -16,7 +15,7 @@ type returnData struct {
 func HelloWorld(w http.ResponseWriter, request *http.Request) {
 	data := returnData{Title: "sdada"}
 	fmt.Println(data)
-	renderTemplate(w, "hello", &data)
+	common.RenderTemplate(w, "hello", &data)
 }
 
 func ServerSetup(port string) {
@@ -25,12 +24,4 @@ func ServerSetup(port string) {
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal("ListenAndServe err: ", err)
 	}
-}
-
-func renderTemplate(w http.ResponseWriter, tmpl string, p *returnData) {
-	t, err := template.ParseFiles("tmpl/" + tmpl + ".gtpl")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-	t.Execute(w, p)
 }
