@@ -9,21 +9,18 @@ import (
 
 type HandleFnc func(http.ResponseWriter, *http.Request)
 
-type structData struct {}
-
-type Page struct {
+type returnData struct {
 	Title string
 }
 
 /* handle a simple get request */
 func HelloWorld(w http.ResponseWriter, request *http.Request) {
-	//io.WriteString(w, "<h1>hello, world</h1>")
-	data := Page{Title:"sdada"}
+	data := returnData{Title: "sdada"}
 	fmt.Println(data)
 	renderTemplate(w, "hello", &data)
 }
 
-func ServerSetup(port string)  {
+func ServerSetup(port string) {
 	log.Println("start setup server:")
 	http.HandleFunc("/", logPanics(HelloWorld))
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
@@ -42,11 +39,10 @@ func logPanics(function HandleFnc) HandleFnc {
 	}
 }
 
-func renderTemplate(w http.ResponseWriter, tmpl string,  p *Page) {
-	t, err := template.ParseFiles("tmpl/"+tmpl+".gtpl")
+func renderTemplate(w http.ResponseWriter, tmpl string, p *returnData) {
+	t, err := template.ParseFiles("tmpl/" + tmpl + ".gtpl")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 	t.Execute(w, p)
 }
-
