@@ -21,7 +21,7 @@ func init() {
 	}
 	//defer DbEngin.Close()
 
-	DbEngin.AutoMigrate(&model.Email{})
+	DbEngin.AutoMigrate(&model.Email{}, &model.Address{}, &model.CreditCard{}, &model.User{}, &model.Language{})
 	DbEngin.LogMode(true)
 	fmt.Println("init data base ok")
 
