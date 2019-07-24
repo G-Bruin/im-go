@@ -26,6 +26,7 @@ func ResponseList(w http.ResponseWriter, code int, lists interface{}, total inte
 	//分页数目,
 	RespList(w, code, lists, total)
 }
+
 func Resp(w http.ResponseWriter, code int, data interface{}, msg string) {
 	w.Header().Set("Content-Type", "application/json")
 	//设置200状态
@@ -37,10 +38,8 @@ func Resp(w http.ResponseWriter, code int, data interface{}, msg string) {
 		Message: msg,
 		Data:    data,
 	}
-	log.Println(h)
 	//将结构体转化成json字符串
 	ret, err := json.Marshal(h)
-	log.Println(ret)
 	if err != nil {
 		log.Println(err.Error())
 	}
