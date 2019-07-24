@@ -19,11 +19,14 @@ func init() {
 	if err != nil && "" != err.Error() {
 		log.Fatal(err.Error())
 	}
-	defer db.Close()
 	DbEngin = db
 
 	db.AutoMigrate(&model.Email{}, &model.Address{}, &model.CreditCard{}, &model.User{}, &model.Language{})
 	db.LogMode(true)
 	fmt.Println("init data base ok")
+}
 
+
+func CloseDB() {
+	DbEngin.Close()
 }

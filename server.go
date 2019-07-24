@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"html/template"
 	"log"
 	"net/http"
 	"web/common"
 	"web/controller"
+	"web/service"
 )
 
 func RegisterView() {
@@ -33,7 +33,7 @@ func RegisterView() {
 
 func main() {
 	log.Println("start setup server:9002")
-
+	defer service.CloseDB()
 	http.HandleFunc("/helloworld", common.LogPanics(controller.HelloWorld))
 	http.HandleFunc("/language", common.LogPanics(controller.Create))
 
@@ -42,4 +42,5 @@ func main() {
 	if err := http.ListenAndServe(":9002", nil); err != nil {
 		log.Fatal("ListenAndServe err: ", err)
 	}
+
 }
