@@ -16,6 +16,6 @@ func (service *LanguageService) Create(name string, code string) (language model
 	}
 	//DbEngin.NewRecord(tmp)
 	//res := DbEngin.Where("name = ? AND code = ?", name, code).Find(&tmp)
-	//fmt.Println(res)
+	fmt.Println(DbEngin)
 	return tmp, nil
 }

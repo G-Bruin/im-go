@@ -33,11 +33,12 @@ func RegisterView() {
 
 func main() {
 	log.Println("start setup server:9002")
+
 	http.HandleFunc("/helloworld", common.LogPanics(controller.HelloWorld))
 	http.HandleFunc("/language", common.LogPanics(controller.Create))
 
 	//加载所有模板页面
-	RegisterView()
+	//RegisterView()
 	if err := http.ListenAndServe(":9002", nil); err != nil {
 		log.Fatal("ListenAndServe err: ", err)
 	}
