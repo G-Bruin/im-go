@@ -32,6 +32,7 @@ func RegisterView() {
 }
 
 func main() {
+
 	log.Println("start setup server:9002")
 	http.HandleFunc("/helloworld", common.LogPanics(controller.HelloWorld))
 	http.HandleFunc("/language", common.LogPanics(controller.Create))
