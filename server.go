@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"html/template"
 	"log"
 	"net/http"
@@ -33,7 +34,7 @@ func RegisterView() {
 func main() {
 	log.Println("start setup server:9002")
 	http.HandleFunc("/helloworld", common.LogPanics(controller.HelloWorld))
-	http.HandleFunc("/helloworld2", common.LogPanics(controller.HelloWorld2))
+	http.HandleFunc("/language", common.LogPanics(controller.Create))
 
 	//加载所有模板页面
 	RegisterView()
