@@ -15,18 +15,18 @@ func init() {
 	driveName := "mysql"
 	dsName := "root:root@(127.0.0.1:3306)/chat?charset=utf8&parseTime=True&loc=Local"
 	err := errors.New("")
-	DbEngin, err := gorm.Open(driveName, dsName)
+	db, err := gorm.Open(driveName, dsName)
 	if err != nil && "" != err.Error() {
 		log.Fatal(err.Error())
 	}
-	//defer DbEngin.Close()
+	DbEngin = db
 
-	//res := DbEngin.First(&tmp)
-
-	//fmt.Println(res)
-
-	DbEngin.AutoMigrate(&model.Email{}, &model.Address{}, &model.CreditCard{}, &model.User{}, &model.Language{})
-	DbEngin.LogMode(true)
+	db.AutoMigrate(&model.Email{}, &model.Address{}, &model.CreditCard{}, &model.User{}, &model.Language{})
+	db.LogMode(true)
 	fmt.Println("init data base ok")
+}
 
+
+func CloseDB() {
+	DbEngin.Close()
 }
