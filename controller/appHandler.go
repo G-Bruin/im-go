@@ -2,9 +2,9 @@ package controller
 
 import (
 	"fmt"
+	"im-go/helper"
+	"im-go/service"
 	"net/http"
-	"web/helper"
-	"web/service"
 )
 
 var helloService service.EmailService

@@ -2,7 +2,7 @@ package controller
 
 import (
 	"fmt"
-	"web/service"
+	"im-go/service"
 )
 
 var emailService service.EmailService

@@ -1,9 +1,9 @@
 package controller
 
 import (
+	"im-go/helper"
+	"im-go/service"
 	"net/http"
-	"web/helper"
-	"web/service"
 )
 
 var serviceLanguage service.LanguageService

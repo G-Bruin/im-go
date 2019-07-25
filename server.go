@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"im-go/common"
+	"im-go/controller"
+	"im-go/service"
 	"log"
 	"net/http"
-	"web/common"
-	"web/controller"
-	"web/service"
 )
 
 func RegisterView() {
@@ -34,12 +34,13 @@ func RegisterView() {
 func main() {
 
 	log.Println("start setup server:9002")
+	//defer 关闭 db
 	defer service.CloseDB()
+
 	http.HandleFunc("/helloworld", common.LogPanics(controller.HelloWorld))
 	http.HandleFunc("/language", common.LogPanics(controller.Create))
-
-	//加载所有模板页面
-	//RegisterView()
+	////加载所有模板页面
+	////RegisterView()
 	if err := http.ListenAndServe(":9002", nil); err != nil {
 		log.Fatal("ListenAndServe err: ", err)
 	}
