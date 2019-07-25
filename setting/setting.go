@@ -33,8 +33,8 @@ var ServerSetting = &AppSetting{}
 var cfg *ini.File
 
 func init() {
-	res, err := ini.Load("setting/app.ini")
-	cfg = res
+	var err error
+	cfg, err = ini.Load("setting/app.ini")
 	if err != nil {
 		fmt.Printf("Fail to read file: %v", err)
 		os.Exit(1)
