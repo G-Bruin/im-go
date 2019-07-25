@@ -1,14 +1,29 @@
 package common
 
 import (
+	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 )
 
-func RenderTemplate(w http.ResponseWriter, tmpl string, p interface{}) {
-	t, err := template.ParseFiles("tmpl/" + tmpl + ".gtpl")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+func RegisterView() {
+	//一次解析出全部模板
+	tpl, err := template.ParseGlob("view/*")
+	if nil != err {
+		log.Fatal(err)
 	}
-	t.Execute(w, p)
+	//通过for循环做好映射
+	for _, v := range tpl.Templates() {
+		tplname := v.Name()
+		fmt.Println("HandleFunc    " + v.Name())
+		http.HandleFunc(tplname, func(w http.ResponseWriter,
+			request *http.Request) {
+			fmt.Println("parse     " + v.Name() + "==" + tplname)
+			err := tpl.ExecuteTemplate(w, tplname, nil)
+			if err != nil {
+				log.Fatal(err.Error())
+			}
+		})
+	}
 }

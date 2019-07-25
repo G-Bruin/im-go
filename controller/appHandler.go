@@ -20,12 +20,3 @@ func HelloWorld(w http.ResponseWriter, request *http.Request) {
 	//fmt.Println(data)
 	//common.RenderTemplate(w, "hello", &data)
 }
-
-func HelloWorld2(w http.ResponseWriter, request *http.Request) {
-	fmt.Println(helloService.AddFriend())
-
-	//fmt.Println(DbEngin)
-	//data := returnData{Title: "sdada"}
-	//fmt.Println(data)
-	//common.RenderTemplate(w, "hello", &data)
-}
