@@ -18,8 +18,20 @@ func Create(w http.ResponseWriter, request *http.Request) {
 	vars := request.URL.Query()
 	name := vars.Get("name")
 	code := vars.Get("code")
-
 	user, err := serviceLanguage.Create(name, code)
+	if err != nil {
+		helper.ResponseFail(w, 400, "失败了")
+	} else {
+		helper.ResponseOk(w, 200, user, "")
+	}
+}
+
+func LanguageFind(w http.ResponseWriter, request *http.Request) {
+	vars := request.URL.Query()
+	id := vars.Get("id")
+	test := map[string]string{}
+	test["id"] = id
+	user, err := serviceLanguage.Find(test)
 	if err != nil {
 		helper.ResponseFail(w, 400, "失败了")
 	} else {

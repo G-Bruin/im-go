@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"im-go/helper"
 	"im-go/service"
 	"net/http"
@@ -13,7 +12,7 @@ func HelloWorld(w http.ResponseWriter, request *http.Request) {
 	map2 := make(map[string]string, 100)
 	map2["key"] = "dddd"
 	helper.ResponseOk(w, 200, map2, "asdasda")
-	fmt.Println(helloService.AddFriend())
+	helloService.AddFriend()
 
 	//fmt.Println(DbEngin)
 	//data := returnData{Title: "sdada"}
