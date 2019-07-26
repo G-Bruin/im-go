@@ -30,6 +30,16 @@ type AppSetting struct {
 
 var ServerSetting = &AppSetting{}
 
+// redis 配置文件
+type RdSetting struct {
+	Host     string `ini:"redis_host"`
+	Password string `ini:"redis_password"`
+	Port     int    `ini:"redis_port"`
+	Db       int    `ini:"redis_db"`
+}
+
+var RedisSetting = &RdSetting{}
+
 var cfg *ini.File
 
 func init() {
@@ -41,6 +51,7 @@ func init() {
 	}
 	mapTo("database", DatabaseSetting)
 	mapTo("server", ServerSetting)
+	mapTo("redis", RedisSetting)
 	fmt.Println("init app setting ok")
 }
 
