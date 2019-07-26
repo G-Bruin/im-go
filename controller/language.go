@@ -14,6 +14,13 @@ func Create(w http.ResponseWriter, request *http.Request) {
 	//name := request.PostForm.Get("name")
 	//code := request.PostForm.Get("code")
 
+	//client := setting.RdEngin
+	//var err error
+	//err = client.Set("433242342tt", "value888888", 0).Err()
+	//if err != nil {
+	//	panic(err)
+	//}
+
 	//获取get请求数据
 	vars := request.URL.Query()
 	name := vars.Get("name")
@@ -27,6 +34,7 @@ func Create(w http.ResponseWriter, request *http.Request) {
 }
 
 func LanguageFind(w http.ResponseWriter, request *http.Request) {
+
 	vars := request.URL.Query()
 	id := vars.Get("id")
 	test := make(map[string]interface{})
