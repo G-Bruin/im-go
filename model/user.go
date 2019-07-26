@@ -10,13 +10,13 @@ type BaseModel struct {
 }
 
 type DeletedAt struct {
-	DeletedAt time.Time `gorm:"datetime index" json:"deleted_at"`
+	DeletedAt time.Time `gorm:"datetime;index" json:"deleted_at"`
 }
 
 type User struct {
 	ID       int    `gorm:"primary_key" json:"id"`
-	Name     string `gorm:"size:255 index" json:"name"`
-	Password string `gorm:"size:255" json:"-"`
+	Name     string `gorm:"type:varchar(64);index" json:"name"`
+	Password string `gorm:"type:varchar(255)" json:"-"`
 	BaseModel
 	DeletedAt
 	//CreditCard CreditCard // One-To-One (拥有一个 - CreditCard表的UserID作外键)
