@@ -17,10 +17,11 @@ func (service *LanguageService) Create(name string, code string) (language model
 }
 
 func (service *LanguageService) Find(input map[string]string) (language model.Language, err error) {
+	var db = DbEngin
 	tmp := model.Language{}
 	if _, ok := input["id"]; ok {
-		DbEngin = DbEngin.Where("id = ?", input["id"])
+		db = db.Where("id = ?", input["id"])
 	}
-	DbEngin.Find(&tmp)
+	db.Find(&tmp)
 	return tmp, nil
 }
