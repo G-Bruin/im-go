@@ -16,7 +16,7 @@ func (service *LanguageService) Create(name string, code string) (language model
 	return tmp, nil
 }
 
-func (service *LanguageService) Find(input map[string]string) (language model.Language, err error) {
+func (service *LanguageService) Find(input map[string]interface{}) (language model.Language, err error) {
 	var db = DbEngin
 	tmp := model.Language{}
 	if _, ok := input["id"]; ok {

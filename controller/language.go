@@ -29,7 +29,7 @@ func Create(w http.ResponseWriter, request *http.Request) {
 func LanguageFind(w http.ResponseWriter, request *http.Request) {
 	vars := request.URL.Query()
 	id := vars.Get("id")
-	test := map[string]string{}
+	test := make(map[string]interface{})
 	test["id"] = id
 	user, err := serviceLanguage.Find(test)
 	if err != nil {
