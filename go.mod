@@ -42,4 +42,5 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/jinzhu/gorm v1.9.10
+	github.com/silenceper/gowatch v0.0.0-20190719021550-6b2f9f1adb40
 )
