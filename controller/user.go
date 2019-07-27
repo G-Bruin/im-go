@@ -1,9 +1,13 @@
 package controller
 
 import (
+	"im-go/helper"
 	"im-go/middleware/validator"
+	"im-go/service"
 	"net/http"
 )
+
+var userControl service.UserService
 
 func Register(w http.ResponseWriter, request *http.Request) {
 	request.ParseForm()
@@ -13,5 +17,16 @@ func Register(w http.ResponseWriter, request *http.Request) {
 	}
 	//前置数据验证
 	postData.RegisterValidator(w)
+	//定义map
+	//test := make(map[string]interface{})
+	//test["name"] = postData.Name
+	userControl.Name = postData.Name
+	result := userControl.FindUser()
+	if result.Id > 0 {
+		helper.ResponseFail(w, 403, "用户已经存在")
+	}
+	userControl.Password = postData.Password
+
+	helper.ResponseOk(w, 200, result, "获取数据成功")
 
 }

@@ -16,6 +16,7 @@ type RetrunData struct {
 
 func ResponseFail(w http.ResponseWriter, code int, msg string) {
 	Resp(w, code, nil, msg)
+	panic(msg)
 }
 
 func ResponseOk(w http.ResponseWriter, code int, data interface{}, msg string) {

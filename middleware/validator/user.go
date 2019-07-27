@@ -9,7 +9,7 @@ import (
 
 type User struct {
 	Name     string `valid:"regname~用户名必须是字母+数字,required~用户名必填,stringlength(3|10)~用户名长度是3到10位"`
-	Password string `valid:"regpasswd~密码必须是字母+数字,required~密码必填,stringlength(8|20)~密码长度是3到10位"`
+	Password string `valid:"regpasswd~密码必须是字母+数字,required~密码必填,stringlength(8|20)~密码长度是8到20位"`
 }
 
 func (target User) RegisterValidator(w http.ResponseWriter) {

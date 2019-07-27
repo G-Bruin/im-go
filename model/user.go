@@ -14,8 +14,8 @@ type DeletedAt struct {
 }
 
 type User struct {
-	ID       int    `gorm:"primary_key" json:"id"`
-	Name     string `gorm:"type:varchar(64);index" json:"name" valid:"alphanum,required"`
+	Id       int    `gorm:"primary_key" json:"id"`
+	Name     string `gorm:"type:varchar(64);unique_index" json:"name" `
 	Password string `gorm:"type:varchar(255)" json:"-" `
 	BaseModel
 	DeletedAt

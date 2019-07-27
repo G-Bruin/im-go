@@ -43,4 +43,5 @@ require (
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/jinzhu/gorm v1.9.10
 	github.com/silenceper/gowatch v0.0.0-20190719021550-6b2f9f1adb40
+	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c
 )
