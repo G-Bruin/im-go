@@ -2,8 +2,8 @@ package controller
 
 import (
 	"im-go/helper"
-	"im-go/middleware/validator"
 	"im-go/service"
+	"im-go/validator"
 	"net/http"
 )
 
