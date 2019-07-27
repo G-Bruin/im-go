@@ -20,6 +20,6 @@ type User struct {
 	BaseModel
 	DeletedAt
 	//CreditCard CreditCard // One-To-One (拥有一个 - CreditCard表的UserID作外键)
-	Friends []Friend // One-To-Many (拥有多个 - Friend表的UserID作外键)
+	Friends []Friend `json:"-" ` // One-To-Many (拥有多个 - Friend表的UserID作外键)
 	//Languages []Language `gorm:"many2many:user_languages;"` // Many-To-Many , 'user_languages'是连接表
 }
