@@ -11,8 +11,6 @@ import (
 func Init() {
 	appSetting := setting.ServerSetting
 	fmt.Println("启动http服务，端口" + appSetting.Port)
-	http.HandleFunc("/language", common.LogPanics(Create))
-	http.HandleFunc("/language/show", common.LogPanics(LanguageFind))
 	http.HandleFunc("/user/register", common.LogPanics(Register))
 
 	if err := http.ListenAndServe(":"+appSetting.Port, nil); err != nil {
