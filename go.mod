@@ -37,11 +37,18 @@ replace (
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20190424111038-f61b66f89f4a
+	github.com/benmanns/goworker v0.1.3
+	github.com/cihub/seelog v0.0.0-20170130134532-f561c5e57575 // indirect
+	github.com/garyburd/redigo v1.6.0 // indirect
 	github.com/go-ini/ini v1.44.0
 	github.com/go-redis/redis v6.15.2+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gomodule/redigo v2.0.0+incompatible
+	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/jinzhu/gorm v1.9.10
-	github.com/silenceper/gowatch v0.0.0-20190719021550-6b2f9f1adb40
+	github.com/silenceper/gowatch v0.0.0-20190727063919-6d9b722a5360
+	github.com/silenceper/log v0.0.0-20171204144354-e5ac7fa8a76a // indirect
+	github.com/youtube/vitess v2.1.1+incompatible // indirect
 	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c
+	gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0 // indirect
 )
