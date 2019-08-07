@@ -21,7 +21,7 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	DbEngin.AutoMigrate(&model.User{}, &model.Friend{}, &model.FriendApply{}, &model.Massage{})
+	DbEngin.AutoMigrate(&model.User{}, &model.Friend{}, &model.FriendApply{}, &model.Massage{}, &model.Seckill{}, &model.Good{})
 	DbEngin.LogMode(true)
 	fmt.Println("init database ok")
 }

@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"im-go/helper"
 	"im-go/service"
 	"im-go/validator"
@@ -15,6 +16,7 @@ func Register(w http.ResponseWriter, request *http.Request) {
 		Name:     request.PostForm.Get("name"),
 		Password: request.PostForm.Get("password"),
 	}
+	fmt.Println(postData)
 	//前置数据验证
 	postData.RegisterValidator(w)
 	//定义map
