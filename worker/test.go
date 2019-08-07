@@ -1,4 +1,4 @@
-package main
+package worker
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ func init() {
 	goworker.Register("MyClass", myFunc)
 }
 
-func main() {
+func main2() {
 	if err := goworker.Work(); err != nil {
 		fmt.Println("Error:", err)
 	}
