@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
+	"time"
 )
 
 func httpHandle(method, urlVal, data string) {
@@ -48,15 +51,26 @@ func getParseParam(param string) string {
 
 func sendData(ch chan string) {
 	for {
-		ch <- "http://www.baidu.com"
+		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
+		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
+		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
+		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
+		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
+		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
+		//time.Sleep(1e9 * 1)
 	}
 }
 
 func getData(ch chan string, num chan bool) {
+
+	var arr1 = [22]int{99110, 99111, 99112, 99113, 99114, 99115, 99116, 99117, 99118, 99119, 99120,
+		99121, 99122, 99123, 99124, 99125, 99126, 99127, 99128, 99129, 99130, 99131}
+
 	for v := range ch {
+		activity_id := arr1[rand.Intn(20)]
 		fmt.Println("开始抢了")
-		//httpHandle("POST", v, "333=1&3333=3233")
-		httpHandle("GET", v, "")
+		union_id := "oBZTV1RzRl-VKP2bjz1eL4tVj" + GetRandomString(4)
+		httpHandle("POST", v, "activity_id="+strconv.Itoa(activity_id)+"&union_id=oBZTV1RzRl-VKP2bjz1eL4tVj"+union_id+"&tag=1674779&others=1111")
 	}
 	//num <- false
 
@@ -64,9 +78,26 @@ func getData(ch chan string, num chan bool) {
 
 //测试
 func main() {
+	//for {
+	//	//var queueName = [3]string{"high", "default", "slow"}
+	//	fmt.Println(rand.Intn(3))
+	//	//fmt.Println(queueName[rand.Intn(2)])
+	//	time.Sleep(1e9)
+	//}
 	numChan := make(chan string)
 	num := make(chan bool)
 	go sendData(numChan)
 	go getData(numChan, num)
 	<-num
+}
+
+func GetRandomString(l int) string {
+	str := "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	bytes := []byte(str)
+	result := []byte{}
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	for i := 0; i < l; i++ {
+		result = append(result, bytes[r.Intn(len(bytes))])
+	}
+	return string(result)
 }
