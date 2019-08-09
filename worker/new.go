@@ -127,8 +127,8 @@ func (d *Dispatcher) dispatch() {
 }
 
 func initialize() {
-	maxWorkers := 1
-	maxQueue := 20
+	maxWorkers := 2
+	maxQueue := 4
 	//初始化一个调试者,并指定它可以操作的 工人个数
 	dispatch := NewDispatcher(maxWorkers)
 	JobQueue = make(chan Job, maxQueue) //指定任务的队列长度
