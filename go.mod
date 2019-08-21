@@ -36,16 +36,20 @@ replace (
 )
 
 require (
+	github.com/Bowery/prompt v0.0.0-20190419144237-972d0ceb96f5 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20190424111038-f61b66f89f4a
 	github.com/benmanns/goworker v0.1.3
 	github.com/cihub/seelog v0.0.0-20170130134532-f561c5e57575 // indirect
+	github.com/dchest/safefile v0.0.0-20151022103144-855e8d98f185 // indirect
 	github.com/garyburd/redigo v1.6.0 // indirect
 	github.com/go-ini/ini v1.44.0
 	github.com/go-redis/redis v6.15.2+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gomodule/redigo v2.0.0+incompatible
+	github.com/google/shlex v0.0.0-20181106134648-c34317bd91bf // indirect
 	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/jinzhu/gorm v1.9.10
+	github.com/kardianos/govendor v1.0.9 // indirect
 	github.com/silenceper/gowatch v0.0.0-20190727063919-6d9b722a5360
 	github.com/silenceper/log v0.0.0-20171204144354-e5ac7fa8a76a // indirect
 	github.com/youtube/vitess v2.1.1+incompatible // indirect

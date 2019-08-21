@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"net/http"
 	"net/url"
-	"strconv"
+	//"strconv"
 	"strings"
 	"time"
 )
@@ -22,11 +22,8 @@ func httpHandle(method, urlVal, data string) {
 		}
 		req, _ = http.NewRequest(method, urlVal, nil)
 	} else {
-		fmt.Println(data)
 		req, _ = http.NewRequest(method, urlVal, strings.NewReader(data))
 	}
-	fmt.Println(strings.NewReader(data))
-
 	//可以添加多个cookie
 	cookie1 := &http.Cookie{Name: "X-Xsrftoken", Value: "111", HttpOnly: true}
 	req.AddCookie(cookie1)
@@ -35,12 +32,12 @@ func httpHandle(method, urlVal, data string) {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8") //设置Content-Type
 
 	resp, err := client.Do(req)
-
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer resp.Body.Close()
 	b, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(b)
 	fmt.Println(string(b))
 }
 
@@ -50,27 +47,33 @@ func getParseParam(param string) string {
 }
 
 func sendData(ch chan string) {
+	//for i := 0; i < 10; i++ {
 	for {
-		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
-		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
-		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
-		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
-		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
-		ch <- "http://127.0.0.1:8091/v2/api/sjdgoapi/activity/add_timeline_recored"
-		//time.Sleep(1e9 * 1)
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		ch <- "http://shopdao.com/v2/api/service/card/join"
+		time.Sleep(1e9 * 1)
 	}
 }
 
 func getData(ch chan string, num chan bool) {
 
-	var arr1 = [22]int{99110, 99111, 99112, 99113, 99114, 99115, 99116, 99117, 99118, 99119, 99120,
-		99121, 99122, 99123, 99124, 99125, 99126, 99127, 99128, 99129, 99130, 99131}
+	//var arr1 = [22]int{99110, 99111, 99112, 99113, 99114, 99115, 99116, 99117, 99118, 99119, 99120,
+	//	99121, 99122, 99123, 99124, 99125, 99126, 99127, 99128, 99129, 99130, 99131}
 
 	for v := range ch {
-		activity_id := arr1[rand.Intn(20)]
-		fmt.Println("开始抢了")
-		union_id := "oBZTV1RzRl-VKP2bjz1eL4tVj" + GetRandomString(4)
-		httpHandle("POST", v, "activity_id="+strconv.Itoa(activity_id)+"&union_id=oBZTV1RzRl-VKP2bjz1eL4tVj"+union_id+"&tag=1674779&others=1111")
+		//activity_id := arr1[rand.Intn(20)]
+		//fmt.Println("开始抢了")
+		//union_id := "oBZTV1RzRl-VKP2bjz1eL4tVj" + GetRandomString(4)
+		//httpHandle("POST", v, "activity_id="+strconv.Itoa(activity_id)+"&union_id=oBZTV1RzRl-VKP2bjz1eL4tVj"+union_id+"&tag=1674779&others=1111")
+		httpHandle("POST", v, "activity_id=167727&union_id=oBZTV1cHTrm7WAJIRQWtHQKoGIPo")
 	}
 	//num <- false
 

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"os"
 	"strconv"
 	"time"
 )
@@ -114,8 +115,6 @@ func (d *Dispatcher) dispatch() {
 			go func(job Job) {
 				//从现有的对象池中拿出一个
 				jobChannel := <-d.WorkerPool
-				fmt.Println(jobChannel)
-				fmt.Println(job)
 				jobChannel <- job
 			}(job)
 		default:
@@ -129,6 +128,8 @@ func (d *Dispatcher) dispatch() {
 func initialize() {
 	maxWorkers := 2
 	maxQueue := 4
+	fmt.Println(os.Getenv("MAX_QUEUE"))
+	fmt.Println(os.Getenv("MAX_QUEUE"))
 	//初始化一个调试者,并指定它可以操作的 工人个数
 	dispatch := NewDispatcher(maxWorkers)
 	JobQueue = make(chan Job, maxQueue) //指定任务的队列长度
@@ -139,7 +140,7 @@ func initialize() {
 func main() {
 	//初始化对象池
 	initialize()
-	for i := 0; i < 1; i++ {
+	for i := 0; i < 10; i++ {
 		p := Payload{
 			fmt.Sprintf("玩家-[%s]", strconv.Itoa(i)),
 		}
@@ -148,5 +149,5 @@ func main() {
 		}
 		time.Sleep(time.Second)
 	}
-	close(JobQueue)
+	//close(JobQueue)
 }
