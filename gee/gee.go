@@ -1,6 +1,7 @@
 package gee
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -33,6 +34,7 @@ func (engine *Engine) POST(pattern string, handler HandlerFunc) {
 
 // Run defines the method to start a http server
 func (engine *Engine) Run(addr string) (err error) {
+	fmt.Println(engine.router.roots)
 	return http.ListenAndServe(addr, engine)
 }
 
